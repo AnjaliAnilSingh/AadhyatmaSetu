@@ -17,7 +17,7 @@ const SpiritualBooksPage = () => {
 
   const user = useSelector(selectUser);
   const token = localStorage.getItem('authToken');
-  const API_KEY = 'AIzaSyBSd3Q00c8Wx4PB_Fyyw7YbdQoNi07zPNQ';
+  const API_KEY = 'process.env.GOOGLEBOOKS';
 
   const fetchSpiritualBooks = async () => {
     try {

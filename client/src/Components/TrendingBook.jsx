@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const TrendingBook = () => {
   const [book, setBook] = useState(null);
-  const API_KEY = "AIzaSyBSd3Q00c8Wx4PB_Fyyw7YbdQoNi07zPNQ";
+  const API_KEY = "process.env.GOOGLEBOOKS";
 
   const fetchTrendingBook = async () => {
     try {

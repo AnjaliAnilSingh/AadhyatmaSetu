@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 
 const Meditation = () => {
   const [tracks, setTracks] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); 
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const user = useSelector(selectUser);
   const favorites = useSelector(selectFavorites);
@@ -26,7 +26,7 @@ const Meditation = () => {
           "grant_type=client_credentials",
           {
             headers: {
-              Authorization: `Basic ${btoa("5df1748b1e194517b17b9e8bb89e737c:dbfa82188165405bb60c7f73c84fc42e")}`,
+              Authorization: `Basic ${btoa("process.env.SPOTIFY")}`,
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
