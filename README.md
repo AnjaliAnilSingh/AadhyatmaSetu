@@ -43,7 +43,7 @@ AadhyatmaSetu is a MERN-based full-stack spiritual web platform that features an
 ## 🖼️ Screenshots
 
 > https://drive.google.com/drive/folders/1eq8Y6wkcOtlFMm-0x5EzxRC22hfx0Nqi?usp=sharing
-> 📂 [Click to view AadhyatmaSetu Screenshots on Google Drive](https://drive.google.com/drive/folders/1eq8Y6wkcOtlFMm-0x5EzxRC22hfx0Nqi?usp=sharing)
+> 📂 (https://drive.google.com/drive/folders/1eq8Y6wkcOtlFMm-0x5EzxRC22hfx0Nqi?usp=sharing)
 
 ---
 
