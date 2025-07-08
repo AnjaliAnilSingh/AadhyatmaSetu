@@ -27,7 +27,7 @@ const app = express();
 
 // MIDDLEWARES
 const corsOptions = {
-    origin: 'https://aadhyatma-setu.vercel.app/',
+    origin: 'https://aadhyatma-setu.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Authorization', 'Content-Type'],
 };
