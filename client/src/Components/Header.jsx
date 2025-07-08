@@ -31,7 +31,7 @@ const Header = () => {
       </div>
 
       {/* Center Options (Desktop) */}
-      <nav className="hidden md:flex space-x-8 relative ml-20">
+      <nav className="hidden md:flex space-x-8 relative ml-6">
         <RouterLink to="/aboutus" className="cursor-pointer text-creme font-semibold text-xl hover:text-olive hover:font-extrabold transition">
           ABOUT
         </RouterLink>
