@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../redux/features/auth/authSlice"; // To get user info
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import client from "../lib/axios";
 
 const UserDashboard = () => {
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ const UserDashboard = () => {
     // Fetch favorite data based on the type (song, book, meditation)
     const fetchFavorites = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/v1/favorites/${user._id}`, {
+            const response = await client.get(`/favorites/${user._id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -61,7 +62,7 @@ const UserDashboard = () => {
 
         try {
             console.log("Removing from favorites...");
-            await axios.delete(`http://localhost:5000/api/v1/favorites/${item._id}`, {
+            await client.delete(`/favorites/${item._id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -86,7 +87,7 @@ const UserDashboard = () => {
 
         try {
             // Submit feedback to the API
-            await axios.post("http://localhost:5000/api/v1/feedback/add", {
+            await client.post("/feedback/add", {
                 rating,
                 comments: comment, // Change 'comment' to 'comments' here
                 userId: user._id,

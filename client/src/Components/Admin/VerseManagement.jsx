@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import client from "../../lib/axios";
 
 const VerseManagement = () => {
     const [verses, setVerses] = useState([]);
@@ -8,7 +9,7 @@ const VerseManagement = () => {
     // Fetch all verses
     const fetchVerses = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/v1/admin/verses", {
+            const response = await client.get("/admin/verses", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -22,7 +23,7 @@ const VerseManagement = () => {
 
     const deleteVerse = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/v1/verses/${id}`, {
+            await client.delete(`/verses/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

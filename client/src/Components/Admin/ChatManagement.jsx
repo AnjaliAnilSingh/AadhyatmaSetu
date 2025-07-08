@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import client from "../../lib/axios";
 
 const ChatManagement = () => {
     const [chats, setChats] = useState([]);
@@ -9,7 +10,7 @@ const ChatManagement = () => {
     // Fetch all chats
     const fetchChats = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/v1/admin/chats", {
+            const response = await client.get("/admin/chats", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

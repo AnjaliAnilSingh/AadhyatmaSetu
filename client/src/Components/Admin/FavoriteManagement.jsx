@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import client from "../../lib/axios";
 
 const FavoriteManagement = () => {
     const [favorites, setFavorites] = useState({
@@ -11,7 +12,7 @@ const FavoriteManagement = () => {
     const token = localStorage.getItem('authToken')
     const fetchFavorites = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/v1/admin/favorites", {
+            const response = await client.get("/admin/favorites", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -41,7 +42,7 @@ const FavoriteManagement = () => {
 
     const deleteFavorite = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/v1/admin/favorites/${id}`, {
+            await client.delete(`/admin/favorites/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

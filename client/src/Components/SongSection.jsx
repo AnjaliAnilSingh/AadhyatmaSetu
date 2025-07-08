@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUser, selectFavorites, toggleFavorite } from "../redux/features/auth/authSlice";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"; // Import heart icons
 import toast from 'react-hot-toast'; // Importing toast notification
+import client from "../lib/axios";
 
 const SongSection = () => {
   const [tracks, setTracks] = useState([]);
@@ -23,7 +24,7 @@ const SongSection = () => {
           "grant_type=client_credentials",
           {
             headers: {
-              Authorization: `Basic ${btoa("process.env.SPOTIFY")}`,
+              Authorization: `Basic ${btoa(import.meta.env.VITE_SPOTIFY)}`,
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
@@ -62,7 +63,7 @@ const SongSection = () => {
 
     try {
       // Sending the favorite data to the backend with the `type` field set to 'song'
-      await axios.post("http://localhost:5000/api/v1/favorites", {
+      await client.post("/favorites", {
         userId: user._id,
         type: 'song',  // Type is now 'song'
         trackId: track.id,

@@ -6,6 +6,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useSelector } from 'react-redux';
 import { selectUser } from '../redux/features/auth/authSlice';
 import toast from 'react-hot-toast';
+import client from '../lib/axios';
 
 const SpiritualBooksPage = () => {
   const [books, setBooks] = useState([]);
@@ -17,7 +18,7 @@ const SpiritualBooksPage = () => {
 
   const user = useSelector(selectUser);
   const token = localStorage.getItem('authToken');
-  const API_KEY = 'process.env.GOOGLEBOOKS';
+  const API_KEY = import.meta.env.VITE_GOOGLEBOOKS;
 
   const fetchSpiritualBooks = async () => {
     try {
@@ -46,7 +47,7 @@ const SpiritualBooksPage = () => {
 
   const fetchFavorites = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/v1/favorites/${user._id}`, {
+      const response = await client.get(`/favorites/${user._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -78,14 +79,14 @@ const SpiritualBooksPage = () => {
       const isFavorite = favorites.some(fav => fav.itemId === book.id);
 
       if (isFavorite) {
-        await axios.delete(`http://localhost:5000/api/v1/favorites/${book.id}`, {
+        await client.delete(`/favorites/${book.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setFavorites(favorites.filter(fav => fav.itemId !== book.id));
       } else {
-        await axios.post("http://localhost:5000/api/v1/favorites", {
+        await client.post("/favorites", {
           userId: user._id,
           bookId: book.id,
           bookTitle: book.title,

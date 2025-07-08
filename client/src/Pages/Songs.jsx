@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUser, selectFavorites, toggleFavorite } from "../redux/features/auth/authSlice";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import toast from 'react-hot-toast';
+import client from "../lib/axios";
 
 const categoryTrackIds = {
   aarti: [
@@ -91,7 +92,7 @@ const SongsPage = () => {
           "grant_type=client_credentials",
           {
             headers: {
-              Authorization: `Basic ${btoa("process.env.SPOTIFY")}`,
+              Authorization: `Basic ${btoa(import.meta.env.VITE_SPOTIFY)}`,
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
@@ -126,7 +127,7 @@ const SongsPage = () => {
     dispatch(toggleFavorite(track.id));
 
     try {
-      await axios.post("http://localhost:5000/api/v1/favorites", {
+      await client.post("/favorites", {
         userId: user._id,
         type: 'song',
         trackId: track.id,

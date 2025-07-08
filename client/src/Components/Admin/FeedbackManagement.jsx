@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import client from "../../lib/axios";
 
 const FeedbackManagement = () => {
     const [feedbacks, setFeedbacks] = useState([]);
@@ -9,7 +10,7 @@ const FeedbackManagement = () => {
     // Fetch all feedbacks
     const fetchFeedbacks = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/v1/feedback/getAllfeeds", {
+            const response = await client.get("/feedback/getAllfeeds", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import client from "../../lib/axios";
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]);
@@ -8,7 +9,7 @@ const UserManagement = () => {
     // Fetch all users
     const fetchUsers = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/v1/admin/users", {
+            const response = await client.get("/admin/users", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -23,7 +24,7 @@ const UserManagement = () => {
 
     const deleteUser = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/v1/users/${id}`, {
+            await client.delete(`/users/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
