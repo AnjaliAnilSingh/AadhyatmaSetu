@@ -46,4 +46,10 @@ AadhyatmaSetu is a MERN-based full-stack spiritual web platform that features an
 
 ---
 
+## 🔗 Live Project
+
+> 🌐 [Click to View Live AadhyatmaSetu Web App](https://aadhyatma-setu.vercel.app/)
+
+---
+
 🙏 *Made with purpose and peace.*
